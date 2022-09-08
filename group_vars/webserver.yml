@@ -1,4 +1,4 @@
-user_dir: "/home/vagrant"
+user_dir: "/home/it21992"
 app_port: 5000
 service:
   workingdir: /home/vagrant/django-project/myproject
