@@ -7,7 +7,8 @@ deployment-it21992.ddns.net ansible_user=it21992 ansible_ssh_private_key_file=~/
 #app02
 
 [database]
-db01
+deployment-it21992.ddns.net ansible_user=it21992 ansible_ssh_private_key_file=~/.ssh/rsa_devops
+#db01
 
 [control]
 control ansible_connection=local

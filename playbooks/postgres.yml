@@ -17,7 +17,7 @@
     - postgres
   vars:
     postgresql_databases:
-      - name: demodb
+      - name: student_management_db
     postgresql_users:
       - name: demouser
         password: pass123
