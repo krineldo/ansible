@@ -2,11 +2,13 @@
 lb01
 
 [webserver]
+#deployment3-it21992.ddns.net ansible_user=Krineldo ansible_ssh_private_key_file=~/.ssh/rsa_devops
 deployment-it21992.ddns.net ansible_user=it21992 ansible_ssh_private_key_file=~/.ssh/rsa_devops
 #app01
 #app02
 
 [database]
+#deployment3-it21992.ddns.net ansible_user=Krineldo ansible_ssh_private_key_file=~/.ssh/rsa_devops
 deployment-it21992.ddns.net ansible_user=it21992 ansible_ssh_private_key_file=~/.ssh/rsa_devops
 #db01
 

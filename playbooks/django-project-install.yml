@@ -72,7 +72,7 @@
     lineinfile:
       dest: "{{app_dir}}/student_management_system/student_management_system/settings.py"
       regexp: "^ALLOWED_HOSTS ="
-      line: "ALLOWED_HOSTS = ['{{ipify_public_ip}}', 'localhost', '127.0.0.1']"
+      line: "ALLOWED_HOSTS = ['{{ipify_public_ip}}', 'localhost', '127.0.0.1', 'deployment-it21992.ddns.net']"
       state: present
 
   - name: install and activate virtual environment
@@ -117,38 +117,38 @@
 
 
 
-    #- name: copy django service file
-    #  template:
-    #    src: ../files/django/gunicorn.service.j2
-    #    dest: "/etc/systemd/system/gunicorn.service"
-    #  become: yes
-    #  become_user: root
+    - name: copy django service file
+      template:
+        src: ../files/django/gunicorn.service.j2
+        dest: "/etc/systemd/system/gunicorn.service"
+      become: yes
+      become_user: root
 
 
-    #- name: ensure gunicorn service started
-    #  service:
-    #    name: gunicorn
-    #    state: started
-    #    enabled: yes
-    #  become: yes
+    - name: ensure gunicorn service started
+      service:
+        name: gunicorn
+        state: started
+        enabled: yes
+      become: yes
 
-  #- name: install and configure nginx
-  #  block:
+  - name: install and configure nginx
+    block:
 
-    #- name: "APT - install nginx"
-    #  apt:
-    #    name: nginx
-    #    update_cache: yes
+    - name: "APT - install nginx"
+      apt:
+        name: nginx
+        update_cache: yes
 
-    #- name: copy nginx conf file
-    #  template:
-    #    src: ../files/nginx/demo.nginx.j2
-    #    dest: "/etc/nginx/sites-available/django"
+    - name: copy nginx conf file
+      template:
+        src: ../files/nginx/demo.nginx.j2
+        dest: "/etc/nginx/sites-available/django"
 
-    #- name: copy nginx https conf file
-    #  template:
-    #    src: ../files/nginx/demo.https.nginx.j2
-    #    dest: "/etc/nginx/sites-available/djangossl"
+    - name: copy nginx https conf file
+      template:
+        src: ../files/nginx/demo.https.nginx.j2
+        dest: "/etc/nginx/sites-available/djangossl"
 
 
     #- name: copy certificates
@@ -160,12 +160,12 @@
     #    - ../files/certs/server.key
 
 
-    #- name: enable django site in nginx
-    #  file:
-    #    src: "/etc/nginx/sites-available/django"
-    #    dest: "/etc/nginx/sites-enabled/django"
-    #    state: link
-    #  notify: restart nginx
+    - name: enable django site in nginx
+      file:
+        src: "/etc/nginx/sites-available/django"
+        dest: "/etc/nginx/sites-enabled/django"
+        state: link
+      notify: restart nginx
 
     #- name: enable flaskssl site in nginx
     #  file:
@@ -174,14 +174,14 @@
     #    state: link
     #  notify: restart nginx
 
-    #- name: de-activate default nginx site
-    #  file:
-    #    path: /etc/nginx/sites-enabled/default
-    #    state: absent
-    #  notify: restart nginx
+    - name: de-activate default nginx site
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+      notify: restart nginx
 
-    #become: yes
-    #become_user: root
+    become: yes
+    become_user: root
 
 
 
