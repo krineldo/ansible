@@ -13,9 +13,14 @@ djangoservice:
 
 app:
   env:
-    SQLALCHEMY_DATABASE_URI: postgresql://demouser:pass123@db01/demodb
+    SQLALCHEMY_DATABASE_URI: 'postgresql://demouser:pass123@db01/student_management_db'
     SQLALCHEMY_TRACK_MODIFICATIONS: False
     SECRET_KEY: sfvgbrh212131
+    DATABASE_NAME: 'student_management_db'
+    DATABASE_USER: 'demouser'
+    DATABASE_PASS: 'pass123'
+    DATABASE_HOST: '127.0.0.1'
+    DATABASE_PORT: '5432'
 
 django:
   env:
