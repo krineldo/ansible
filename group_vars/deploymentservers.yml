@@ -20,4 +20,10 @@ app:
 django:
   env:
     SECRET_KEY: 'sfvgbrh212131'
-    DATABASE_URL: 'postgresql://demouser:pass123@20.111.47.135/demodb'
+    DATABASE_URL: 'postgresql://demouser:pass123@db01/student_management_db'
+    DATABASE_NAME: 'student_management_db'
+    DATABASE_USER: 'demouser'
+    DATABASE_PASS: 'pass123'
+    DATABASE_HOST: '127.0.0.1'
+    DATABASE_PORT: '5432'
+
